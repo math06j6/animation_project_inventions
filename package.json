@@ -1,0 +1,22 @@
+{
+  "name": "animation_project_inventions",
+  "version": "0.0.1",
+  "description": "project",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/math06j6/animation_project_inventions.git"
+  },
+  "author": "Jonas+Mathias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/math06j6/animation_project_inventions/issues"
+  },
+  "homepage": "https://github.com/math06j6/animation_project_inventions#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
