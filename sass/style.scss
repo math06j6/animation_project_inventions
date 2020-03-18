@@ -3,10 +3,23 @@
 
 body {
   color: vars.$base-color;
-
   background: vars.$bg-color;
+  font: 100% vars.$font-stack;
 
-  // color: vars.$blue-color;
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 
   h1 {
     // Mixin test
@@ -17,7 +30,22 @@ body {
   }
 
   h2 {
+    color: vars.$orange-color;
+    @include mixins.flexible();
+  }
+
+  h3 {
     text-decoration: underline vars.$orange-color;
     @include mixins.flexible();
+  }
+
+  a,
+  p,
+  li {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
   }
 }
