@@ -1,0 +1,23 @@
+@use 'partials/vars';
+@use 'partials/mixins';
+
+body {
+  color: vars.$base-color;
+
+  background: vars.$bg-color;
+
+  // color: vars.$blue-color;
+
+  h1 {
+    // Mixin test
+    color: vars.$white-color;
+    background: vars.$green-color;
+    @include mixins.flexible();
+    @include mixins.defaultBorder();
+  }
+
+  h2 {
+    text-decoration: underline vars.$orange-color;
+    @include mixins.flexible();
+  }
+}
