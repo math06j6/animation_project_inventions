@@ -1,25 +1,22 @@
 @use 'partials/vars';
 @use 'partials/mixins';
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
 body {
   color: vars.$base-color;
   background: vars.$bg-color;
   font: 100% vars.$font-stack;
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: 100%;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
 
   article {
     max-width: 1400px;
@@ -55,5 +52,29 @@ body {
     line-height: 1.6;
     padding: 0;
     margin: 0;
+  }
+}
+
+.decade-btn {
+  padding: 0;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  circle.head {
+    color: vars.$white-color;
+    fill: vars.$green-color;
+  }
+  circle.head {
+    color: vars.$white-color;
+    fill: vars.$green-color;
+  }
+  text.circle-text {
+    fill: vars.$white-color;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
