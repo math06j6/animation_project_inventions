@@ -1,6 +1,6 @@
 "use strict";
 
-document.querySelector("h1").textContent = "Goddag";
+// document.querySelector("h1").textContent = "Goddag";
 
 // const data = [
 //   {
@@ -12,3 +12,4 @@ document.querySelector("h1").textContent = "Goddag";
 //   t.src = "elements/" + d.i;
 //   document.body.appendChild(t);
 // });
+

@@ -21,7 +21,7 @@ body {
   article {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 1rem;
   }
 
   h1 {
@@ -57,16 +57,17 @@ body {
 
 .decade-btn {
   padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  font-family: inherit;
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 4rem;
+    height: 4rem;
   }
 
-  circle.head {
-    color: vars.$white-color;
-    fill: vars.$green-color;
-  }
   circle.head {
     color: vars.$white-color;
     fill: vars.$green-color;
