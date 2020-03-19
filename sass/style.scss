@@ -108,12 +108,7 @@ body {
   }
 }
 
-<<<<<<< HEAD
 .decade-circle {
-=======
-.computer-btn,
-.decade-btn {
->>>>>>> 255c860aae58617bdd22a82f9e82a778f7d93b19
   padding: 0;
   cursor: pointer;
   background: none;
@@ -122,10 +117,7 @@ body {
   font-family: inherit;
   width: 5rem;
   height: 5rem;
-<<<<<<< HEAD
   text-decoration: none;
-=======
->>>>>>> 255c860aae58617bdd22a82f9e82a778f7d93b19
   // Anvendes til (midlertidig animation)
 
   svg {
@@ -146,7 +138,6 @@ body {
 }
 
 .computer-btn {
-<<<<<<< HEAD
   padding: 0;
   cursor: pointer;
   background: none;
@@ -169,8 +160,6 @@ body {
 }
 
 .computer-btn {
-=======
->>>>>>> 255c860aae58617bdd22a82f9e82a778f7d93b19
   --delay: calc(var(--i, 1) * 400ms);
   animation: fadeIn 1500ms var(--delay) forwards;
   opacity: 0;
