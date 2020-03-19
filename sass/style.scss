@@ -5,11 +5,23 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 100%;
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
 }
 
 body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
   color: vars.$base-color;
   background: vars.$bg-color;
   font: 100% vars.$font-stack;
@@ -18,7 +30,35 @@ body {
   overflow-wrap: break-word;
   hyphens: auto;
 
+  .scroll-container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+  }
+
   article {
+    height: 100vh;
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  article:nth-child(2n) {
+    background: vars.$green-color;
+  }
+
+  article:nth-child(3n) {
+    background: vars.$bg-color;
+  }
+
+  section {
     max-width: 1400px;
     margin: 0 auto;
     padding: 1rem;
@@ -55,6 +95,7 @@ body {
   }
 }
 
+.computer-btn,
 .decade-btn {
   padding: 0;
   cursor: pointer;
@@ -64,6 +105,7 @@ body {
   font-family: inherit;
   width: 5rem;
   height: 5rem;
+  // Anvendes til (midlertidig animation)
 
   svg {
     width: 100%;
@@ -78,5 +120,37 @@ body {
     fill: vars.$white-color;
     font-weight: 400;
     font-size: 1rem;
+  }
+}
+
+.computer-btn {
+  --delay: calc(var(--i, 1) * 400ms);
+  animation: fadeIn 1500ms var(--delay) forwards;
+  opacity: 0;
+}
+
+.computer-btn:nth-child(2) {
+  --i: 2;
+}
+
+.computer-btn:nth-child(3) {
+  --i: 3;
+}
+
+.computer-btn:nth-child(4) {
+  --i: 4;
+}
+
+.computer-btn:nth-child(5) {
+  --i: 5;
+}
+
+.computer-btn:nth-child(6) {
+  --i: 6;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
   }
 }
