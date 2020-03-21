@@ -13,6 +13,11 @@ function init() {
   HTML.container = document.querySelector("main");
   getData();
   startObserver();
+  hideDetail();
+
+  document.querySelectorAll(".computer-btn").forEach(info => {
+    info.addEventListener("click", displayTheme);
+  });
 }
 
 async function getData() {
@@ -51,4 +56,23 @@ function startObserver() {
   articles.forEach((article, index) => {
     observer.observe(article);
   });
+}
+
+function hideDetail() {
+  console.log("hideDetail");
+  document.querySelector("#detail").style.display = "none";
+}
+
+function displayTheme() {
+  console.log("displayTheme");
+  // create clone
+  // const clone = document.querySelector("template#theme").content.cloneNode(true);
+
+  document.querySelector("#detail").style.display = "flex";
+
+  // Hvis man klikker et vilkårligt sted på knappen .close-btn, så lukker man fuldskærmsvisning
+  document.querySelector("#detail .close-btn").addEventListener("click", hideDetail);
+
+  // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
+  document.querySelector("#detail").addEventListener("click", hideDetail);
 }
