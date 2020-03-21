@@ -1,15 +1,12 @@
 "use strict";
+import "@babel/polyfill";
+import { getJson } from "./modules/getJsonData";
 
-// document.querySelector("h1").textContent = "Goddag";
+document.addEventListener("DOMContentLoaded", start);
 
-// const data = [
-//   {
-//     i: "beachball.svg"
-//   }
-// ];
-// data.forEach(d => {
-//   const t = document.createElement("svg");
-//   t.src = "elements/" + d.i;
-//   document.body.appendChild(t);
-// });
+let jsonData = [];
 
+async function start() {
+  jsonData = await getJson("./static_data.json");
+  console.table(jsonData);
+}

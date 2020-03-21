@@ -1,0 +1,22 @@
+[
+  {
+    "filetype": "svgicon",
+    "url": "./static/floppy_1color.svg",
+    "name": "floppy"
+  },
+  {
+    "filetype": "svgicon",
+    "url": "./static/gaming_1color.svg",
+    "name": " gaming"
+  },
+  {
+    "filetype": "svgicon",
+    "url": "./static/www_1color.svg",
+    "name": "www"
+  },
+  {
+    "filetype": "pcimage",
+    "url": "./static/Ibm_pc_5150.jpg",
+    "name": "80erpc"
+  }
+]
