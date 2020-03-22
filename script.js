@@ -64,7 +64,6 @@ function hideDetail() {
 }
 
 function displayTheme() {
-  console.log("displayTheme");
   // create clone
   // const clone = document.querySelector("template#theme").content.cloneNode(true);
 
