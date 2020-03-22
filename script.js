@@ -21,7 +21,7 @@ function init() {
 }
 
 async function getData() {
-  jsonData = await getJson("./static_data.json");
+  jsonData = await getJson("static_data.json");
   console.table(jsonData);
 }
 
