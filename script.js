@@ -1,5 +1,5 @@
 "use strict";
-import "@babel/polyfill";
+// import "@babel/polyfill";
 import { getJson } from "./modules/getJsonData";
 
 window.addEventListener("DOMContentLoaded", init);
