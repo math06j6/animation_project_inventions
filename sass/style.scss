@@ -108,14 +108,14 @@ body {
 .decade-selector {
   position: sticky;
   position: fixed;
-  bottom: 5vh;
+  bottom: 0;
   width: 100vw;
   z-index: 5;
 
   .decade-wrapper {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .decade-selector p {
@@ -270,7 +270,7 @@ body {
 .line {
   stroke-dasharray: 2147.089;
   stroke-dashoffset: 2147.089;
-  animation: draw 5s linear 1;
+  animation: draw 6s linear 1;
   animation-fill-mode: forwards;
   stroke: vars.$base-color;
   fill: none;
