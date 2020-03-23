@@ -98,9 +98,38 @@ function decadeClick() {
 
 function updateDecade() {
   jsonData.forEach(dataElement => {
-    if (dataElement.id === settings.currentDecade) {
-      console.log(dataElement);
+    if (dataElement.id != undefined && dataElement.id.substring(dataElement.id.length - 1, dataElement.id.length) === settings.currentDecade) {
       HTML.computerImg.src = dataElement.url;
+      document.documentElement.style.setProperty("--move-content", window.innerWidth * (settings.currentDecade - 1) + "px");
+      settings.moveContent = window.innerWidth * (settings.currentDecade - 1) + "px";
+      const child = jsonData.filter(data => data.childOf === dataElement.name);
+      console.table(child);
+      setIcons(child);
+      moveContent();
     }
   });
+}
+
+function setIcons(array) {
+  document.querySelectorAll(".computer-btn").forEach((button, index) => {
+    /* button.style.backgroundImage = array[index].url; */
+  });
+}
+
+function moveContent() {
+  let tl = gsap.timeline();
+  tl.to(".computer-btn", {
+    duration: 2,
+    x: settings.moveContent,
+    delay: 0.5,
+    stagger: 0.2,
+    ease: "elastic"
+  });
+  /*   tl.to(".decade-circle", {
+    duration: 2,
+    x: settings.moveContent,
+    delay: 0.5,
+    stagger: 0.2,
+    ease: "elastic"
+  }); */
 }

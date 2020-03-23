@@ -30,6 +30,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.9.2",
+    "gsap": "^3.2.6",
     "modules": "^0.4.0"
   }
 }
