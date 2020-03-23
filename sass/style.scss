@@ -278,7 +278,7 @@ body {
   animation-fill-mode: forwards;
   stroke: vars.$base-color;
   fill: none;
-  stroke-width: 1;
+  stroke-width: calc(1 + 0.25vw);
   stroke-miterlimit: 10;
 }
 
