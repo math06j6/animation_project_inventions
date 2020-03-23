@@ -6,7 +6,7 @@
 // }
 
 export async function getJson(url) {
-  const response = await fetch("data/static_data.json");
+  const response = await fetch(url);
   const jsonData = await response.json();
   return jsonData;
 }

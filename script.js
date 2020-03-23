@@ -7,10 +7,13 @@ window.addEventListener("DOMContentLoaded", init);
 
 const HTML = {};
 let jsonData = [];
+const settings = {};
 
 function init() {
   console.log("init");
   HTML.container = document.querySelector("main");
+  HTML.computerImg = document.querySelector(".computer");
+  settings.currentDecade = 1;
   getData();
   startObserver();
   hideDetail();
@@ -22,8 +25,9 @@ function init() {
 }
 
 async function getData() {
-  jsonData = await getJson("static_data.json");
+  jsonData = await getJson("staticdata.json");
   console.table(jsonData);
+  setDecadeEvents();
 }
 
 function startObserver() {
@@ -93,4 +97,63 @@ function selectDecade() {
   });
   // this.style.stroke = "#004153";
   this.style.fill = "#d95e00";
+}
+function setDecadeEvents() {
+  document.querySelectorAll(".decade-selector a").forEach(element => {
+    console.log(element);
+    element.addEventListener("click", decadeClick);
+  });
+}
+
+function decadeClick() {
+  console.log(this.id);
+  let i = settings.currentDecade;
+  settings.currentDecade = this.id.substring(this.id.length - 1, this.id.length);
+  console.log("Current Decade " + settings.currentDecade);
+  if (i != settings.currentDecade) {
+    updateDecade();
+  }
+}
+
+function updateDecade() {
+  console.log("updateDecade");
+  jsonData.forEach(dataElement => {
+    console.log(dataElement);
+    if (dataElement.id != undefined && dataElement.id.substring(dataElement.id.length - 1, dataElement.id.length) === settings.currentDecade) {
+      console.log("inside updateDecade");
+      HTML.computerImg.src = dataElement.url;
+      document.documentElement.style.setProperty("--move-content", window.innerWidth * (settings.currentDecade - 1) + "px");
+      settings.moveContent = window.innerWidth * (settings.currentDecade - 1) + "px";
+      const child = jsonData.filter(data => data.childOf === dataElement.name);
+      console.table(child);
+      setIcons(child);
+      moveContent();
+    }
+  });
+}
+
+function setIcons(array) {
+  console.log("setIcons");
+  document.querySelectorAll(".computer-btn").forEach((button, index) => {
+    /* button.style.backgroundImage = array[index].url; */
+  });
+}
+
+function moveContent() {
+  console.log("moveContent");
+  let tl = gsap.timeline();
+  tl.to(".computer-btn", {
+    duration: 2,
+    x: settings.moveContent,
+    delay: 0.5,
+    stagger: 0.2,
+    ease: "elastic"
+  });
+  /*   tl.to(".decade-circle", {
+    duration: 2,
+    x: settings.moveContent,
+    delay: 0.5,
+    stagger: 0.2,
+    ease: "elastic"
+  }); */
 }
