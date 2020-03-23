@@ -80,12 +80,12 @@ function displayTheme() {
 function checkTimeline() {
   document.querySelectorAll(".dot").forEach(dot => {
     dot.style.fill = "#004153";
-    dot.addEventListener("click", displayMovie);
+    dot.addEventListener("click", selectDecade);
   });
 }
 
-function displayMovie() {
-  console.log("displayMovie");
+function selectDecade() {
+  console.log("selectDecade");
   document.querySelector(".info").classList.remove("hidden");
   document.querySelectorAll(".dot").forEach(dot => {
     // dot.style.stroke = "004153";
