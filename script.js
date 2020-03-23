@@ -18,10 +18,6 @@ function init() {
   startObserver();
   hideDetail();
   checkTimeline();
-
-  document.querySelectorAll(".computer-btn").forEach(info => {
-    info.addEventListener("click", displayTheme);
-  });
 }
 
 async function getData() {
@@ -68,7 +64,7 @@ function hideDetail() {
   document.querySelector("#detail").style.display = "none";
 }
 
-function displayTheme() {
+function displayTheme(buttonId) {
   // create clone
   // const clone = document.querySelector("template#theme").content.cloneNode(true);
 
@@ -79,6 +75,13 @@ function displayTheme() {
 
   // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
   document.querySelector("#detail").addEventListener("click", hideDetail);
+
+  console.log("button id: " + buttonId);
+  console.log("button id: " + buttonId[buttonId.length - 1]);
+  console.table("button id: " + settings.currentIcons[buttonId[buttonId.length - 1] - 1].info);
+  document.querySelector("#detail .info p").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].info;
+  document.querySelector("#detail .info h2").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].name;
+  document.querySelector("#detail .info-img").src = settings.currentIcons[buttonId[buttonId.length - 1] - 1].url;
 }
 
 function checkTimeline() {
@@ -99,6 +102,8 @@ function selectDecade() {
   this.style.fill = "#d95e00";
 }
 function setDecadeEvents() {
+  settings.currentIcons = jsonData.filter(data => data.childOf === "80erpc");
+  setIcons();
   document.querySelectorAll(".decade-selector a").forEach(element => {
     console.log(element);
     element.addEventListener("click", decadeClick);
@@ -124,20 +129,30 @@ function updateDecade() {
       HTML.computerImg.src = dataElement.url;
       document.documentElement.style.setProperty("--move-content", window.innerWidth * (settings.currentDecade - 1) + "px");
       settings.moveContent = window.innerWidth * (settings.currentDecade - 1) + "px";
-      const child = jsonData.filter(data => data.childOf === dataElement.name);
-      console.table(child);
-      setIcons(child);
+      settings.currentIcons = jsonData.filter(data => data.childOf === dataElement.name);
+      setIcons();
       moveContent();
     }
   });
 }
 
-function setIcons(array) {
+function setIcons() {
   console.log("setIcons");
   document.querySelectorAll(".computer-btn").forEach((button, index) => {
-    /* button.style.backgroundImage = array[index].url; */
+    if (settings.currentIcons[index] != undefined) {
+      button.style.backgroundImage = `url(${settings.currentIcons[index].url})`;
+      button.addEventListener("click", function() {
+        displayTheme(button.id);
+      });
+    } else {
+      button.style.backgroundImage = "";
+    }
   });
 }
+
+/*   document.querySelectorAll(".computer-btn").forEach(info => {
+    info.addEventListener("click", displayTheme);
+  }); */
 
 function moveContent() {
   console.log("moveContent");

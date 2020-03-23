@@ -83,13 +83,13 @@ body {
 
   h2 {
     font: 100% vars.$roboto-slab-font-stack;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: vars.$orange-color;
     margin: 0 0 0.5rem;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: normal;
   }
 
@@ -97,7 +97,7 @@ body {
   p,
   li {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.6;
     padding: 0;
     margin: 0;
@@ -222,7 +222,6 @@ body {
   left: 0;
   position: fixed;
   justify-content: center;
-  align-items: center;
   z-index: 99;
   height: 100%;
   width: 100%;
@@ -244,7 +243,22 @@ body {
   }
 
   .info {
-    padding: 1rem;
+    padding: 2.5%;
+  }
+
+  .info p {
+    column-count: 2;
+    column-gap: 2rem;
+    padding: 2.5%;
+  }
+  .info h2 {
+    padding: 2.5%;
+    margin-left: 2%;
+  }
+
+  .info-img {
+    width: 10%;
+    margin: 2.5%;
   }
 }
 
