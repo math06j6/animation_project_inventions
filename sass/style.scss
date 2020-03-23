@@ -271,6 +271,15 @@ body {
 //*-----------------------------------*//
 
 /*------ The timeline -----*/
+
+.st0 {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1;
+  stroke-miterlimit: 10;
+  r: calc(8 + 0.5vw);
+}
+
 .line {
   stroke-dasharray: 2147.089;
   stroke-dashoffset: 2147.089;
