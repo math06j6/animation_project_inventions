@@ -1,5 +1,4 @@
 "use strict";
-import "@babel/polyfill";
 import { getJson } from "./modules/getJsonData";
 
 window.addEventListener("DOMContentLoaded", init);
@@ -7,10 +6,13 @@ window.addEventListener("DOMContentLoaded", init);
 
 const HTML = {};
 let jsonData = [];
+const settings = {};
 
 function init() {
   console.log("init");
   HTML.container = document.querySelector("main");
+  HTML.computerImg = document.querySelector(".computer");
+  settings.currentDecade = 1;
   getData();
   startObserver();
   hideDetail();
@@ -21,8 +23,9 @@ function init() {
 }
 
 async function getData() {
-  jsonData = await getJson("./static_data.json");
+  jsonData = await getJson("staticdata.json");
   console.table(jsonData);
+  setDecadeEvents();
 }
 
 function startObserver() {
@@ -74,4 +77,30 @@ function displayTheme() {
 
   // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
   document.querySelector("#detail").addEventListener("click", hideDetail);
+}
+
+function setDecadeEvents() {
+  document.querySelectorAll(".decade-selector a").forEach(element => {
+    console.log(element);
+    element.addEventListener("click", decadeClick);
+  });
+}
+
+function decadeClick() {
+  console.log(this.id);
+  let i = settings.currentDecade;
+  settings.currentDecade = this.id.substring(this.id.length - 1, this.id.length);
+  console.log("Current Decade " + settings.currentDecade);
+  if (i != settings.currentDecade) {
+    updateDecade();
+  }
+}
+
+function updateDecade() {
+  jsonData.forEach(dataElement => {
+    if (dataElement.id === settings.currentDecade) {
+      console.log(dataElement);
+      HTML.computerImg.src = dataElement.url;
+    }
+  });
 }

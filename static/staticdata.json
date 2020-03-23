@@ -1,0 +1,47 @@
+[
+  {
+    "filetype": "svgicon",
+    "url": "./elements/floppy_1color.svg",
+    "name": "floppy"
+  },
+  {
+    "filetype": "svgicon",
+    "url": "./elements/gaming_1color.svg",
+    "name": " gaming"
+  },
+  {
+    "filetype": "svgicon",
+    "url": "./elements/www_1color.svg",
+    "name": "www"
+  },
+  {
+    "id": "1",
+    "filetype": "pcimage",
+    "url": "./images/Ibm_pc_5150.jpg",
+    "name": "80erpc"
+  },
+  {
+    "id": "2",
+    "filetype": "pcimage",
+    "url": "./images/hp_vectra.jpg",
+    "name": "90erpc"
+  },
+  {
+    "id": "3",
+    "filetype": "pcimage",
+    "url": "./images/ibmthinkpad.jpg",
+    "name": "00erpc"
+  },
+  {
+    "id": "4",
+    "filetype": "pcimage",
+    "url": "./images/Macbook_Air.jpg",
+    "name": "10erpc"
+  },
+  {
+    "id": "5",
+    "filetype": "pcimage",
+    "url": "./images/asuszenbook.jpg",
+    "name": "20erpc"
+  }
+]

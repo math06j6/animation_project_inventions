@@ -22,12 +22,14 @@
     "@babel/preset-react": "^7.9.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "cssnano": "^4.1.10",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.3.1",
     "sass": "^1.26.3"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "@babel/runtime": "^7.9.2"
+    "@babel/runtime": "^7.9.2",
+    "modules": "^0.4.0"
   }
 }
