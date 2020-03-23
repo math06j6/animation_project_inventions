@@ -14,6 +14,7 @@ function init() {
   getData();
   startObserver();
   hideDetail();
+  checkTimeline();
 
   document.querySelectorAll(".computer-btn").forEach(info => {
     info.addEventListener("click", displayTheme);
@@ -74,4 +75,22 @@ function displayTheme() {
 
   // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
   document.querySelector("#detail").addEventListener("click", hideDetail);
+}
+
+function checkTimeline() {
+  document.querySelectorAll(".dot").forEach(dot => {
+    dot.style.fill = "#004153";
+    dot.addEventListener("click", displayMovie);
+  });
+}
+
+function displayMovie() {
+  console.log("displayMovie");
+  document.querySelector(".info").classList.remove("hidden");
+  document.querySelectorAll(".dot").forEach(dot => {
+    // dot.style.stroke = "004153";
+    dot.style.fill = "#004153";
+  });
+  // this.style.stroke = "#004153";
+  this.style.fill = "#d95e00";
 }

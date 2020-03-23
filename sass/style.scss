@@ -47,18 +47,6 @@ body {
     height: auto;
   }
 
-  .scroll-container {
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    overflow-x: scroll;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-  }
-
   article {
     height: 100%;
     flex: 0 0 100%;
@@ -117,36 +105,51 @@ body {
   padding: 0.5rem;
 }
 
-.decade-selector p {
-  font-weight: 700;
-}
+.decade-selector {
+  position: sticky;
+  position: fixed;
+  bottom: 5vh;
+  width: 100vw;
+  z-index: 5;
 
-.decade-circle {
-  padding: 0;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0.25rem;
-  font-family: inherit;
-  width: 5rem;
-  height: 5rem;
-  text-decoration: none;
-  // Anvendes til (midlertidig animation)
-
-  svg {
-    width: 100%;
-    height: 100%;
-    max-width: 5rem;
+  .decade-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
   }
 
-  circle.head {
-    color: vars.$white-color;
-    fill: vars.$green-color;
+  .decade-selector p {
+    font-weight: 700;
   }
-  text.circle-text {
-    fill: vars.$white-color;
-    font-weight: 400;
-    font-size: 1rem;
+
+  .decade-circle {
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    font-family: inherit;
+    width: 5rem;
+    height: 5rem;
+    text-decoration: none;
+    // Anvendes til (midlertidig animation)
+
+    svg {
+      width: 100%;
+      height: 100%;
+      max-width: 5rem;
+    }
+
+    circle.dot,
+    circle.head {
+      color: vars.$green-color;
+      fill: vars.$base-color;
+    }
+    text.circle-text {
+      fill: vars.$white-color;
+      font-weight: 400;
+      font-size: 1rem;
+    }
   }
 }
 
@@ -170,6 +173,7 @@ body {
     height: 100%;
   }
 
+  circle.dot,
   circle.head {
     color: vars.$white-color;
     fill: vars.$green-color;
@@ -261,3 +265,25 @@ body {
 }
 
 //*-----------------------------------*//
+
+/*------ The timeline -----*/
+.line {
+  stroke-dasharray: 2147.089;
+  stroke-dashoffset: 2147.089;
+  animation: draw 5s linear 1;
+  animation-fill-mode: forwards;
+  stroke: vars.$base-color;
+  fill: none;
+  stroke-width: 1;
+  stroke-miterlimit: 10;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 2147.089;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
