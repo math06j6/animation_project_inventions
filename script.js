@@ -48,7 +48,11 @@ function startObserver() {
       const { target } = entry;
 
       if (entry.intersectionRatio >= 0.75) {
-        target.classList.add("is-visible");
+        intersectionHandler(entry);
+
+        // selectDecade(entry);
+        console.log("CHECK NU");
+        observer.unobserve(entry.target);
         target.classList.add("is-visible");
       } else {
         target.classList.remove("is-visible");
@@ -61,6 +65,10 @@ function startObserver() {
   articles.forEach((article, index) => {
     observer.observe(article);
   });
+
+  function intersectionHandler(entry) {
+    console.log("intersectionHandler");
+  }
 }
 
 function hideDetail() {
@@ -92,10 +100,8 @@ function selectDecade() {
   console.log("selectDecade");
   document.querySelector(".info").classList.remove("hidden");
   document.querySelectorAll(".dot").forEach(dot => {
-    // dot.style.stroke = "004153";
     dot.style.fill = "#004153";
   });
-  // this.style.stroke = "#004153";
   this.style.fill = "#d95e00";
 }
 function setDecadeEvents() {
@@ -149,7 +155,7 @@ function moveContent() {
     stagger: 0.2,
     ease: "elastic"
   });
-  /*   tl.to(".decade-circle", {
+  /*   tl.to(".decade_circle", {
     duration: 2,
     x: settings.moveContent,
     delay: 0.5,
