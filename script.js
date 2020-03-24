@@ -68,6 +68,10 @@ function startObserver() {
 
   function intersectionHandler(entry) {
     console.log("intersectionHandler");
+
+    const currentDot = document.querySelectorAll("st0");
+    currentDot.classList.add("recolor");
+    currentDot.classList.remove("recolor");
   }
 }
 
