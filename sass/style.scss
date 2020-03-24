@@ -242,6 +242,36 @@ body {
     right: 1rem;
     color: vars.$green-color;
     cursor: pointer;
+    padding: 0;
+  }
+
+  .bar1,
+  .bar2 {
+    width: 34px;
+    height: 5px;
+    background-color: vars.$green-color;
+    /*    margin: 4px 0;*/
+    transition: 0.4s;
+    border-radius: 40%;
+  }
+
+  .close-btn:hover .bar1,
+  .close-btn:hover .bar2 {
+    background-color: vars.$orange-color;
+  }
+
+  .bar2 {
+    margin-top: 4px;
+  }
+
+  /* Rotates the first bar*/
+  .active-bars .bar1 {
+    transform: rotate(-45deg) translate(-1px, 5px);
+  }
+
+  /* Rotates the second bar */
+  .active-bars .bar2 {
+    transform: rotate(45deg) translate(-1px, -5px);
   }
 
   .info {
