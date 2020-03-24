@@ -164,10 +164,12 @@ function moveContent() {
     stagger: 0.2,
     ease: "elastic"
   });
-  /*   tl.to(".decade-circle", {
+  /*   tl.to(".computer-btn", {
     duration: 2,
-    x: settings.moveContent,
+    repeat: Infinity,
+    scale: 1.3,
     delay: 0.5,
+    yoyo: true,
     stagger: 0.2,
     ease: "elastic"
   }); */
