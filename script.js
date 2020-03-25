@@ -17,7 +17,10 @@ function init() {
   getData();
   startObserver();
   hideDetail();
-  checkTimeline();
+
+  // document.querySelectorAll(".computer-btn").forEach(info => {
+  //   info.addEventListener("click", displayTheme);
+  // });
 }
 
 async function getData() {
@@ -35,19 +38,35 @@ function startObserver() {
   const articles = document.querySelectorAll("article");
 
   let options = {
+    root: null,
     rootMargin: "0px",
-    threshold: 0.75
+    threshold: 0.5
   };
 
   const callback = (entries, observer) => {
     entries.forEach(entry => {
+      console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
       const { target } = entry;
 
       if (entry.intersectionRatio >= 0.75) {
+        intersectionHandler(entry);
+
+        var id = entry.target.getAttribute("id");
+        // find matching link & add appropriate class
+        let newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
+        observer.unobserve(entry.target);
+
         target.classList.add("is-visible");
-        target.classList.add("is-visible");
+        // target.style.background = entry.target.dataset.background;
       } else {
         target.classList.remove("is-visible");
+      }
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        document.querySelector(".picked").classList.remove("picked");
+        // get id of the intersecting section
+        var id = entry.target.getAttribute("id");
+        // find matching link
+        var newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
       }
     });
   };
@@ -57,6 +76,53 @@ function startObserver() {
   articles.forEach((article, index) => {
     observer.observe(article);
   });
+
+  function intersectionHandler(entry) {
+    console.log("intersectionHandler");
+
+    const current = document.querySelector("article");
+    const align = current.getAttribute("data-year");
+    const next = entry.target;
+
+    if (current) {
+      console.log("current");
+      document.querySelector("article").getAttribute("data-year", entry.dataset);
+      console.log("data-year");
+      current.classList.remove("picked");
+      current.classList.add("picked");
+    }
+    if (next) {
+    }
+
+    function selectDecade() {
+      console.log("selectDecade");
+      document.querySelector(".info").classList.remove("hidden");
+
+      document.querySelector("article").getAttribute("data-year", this.dataset);
+
+      const decadeButtons = document.querySelector(".dot");
+      // Get the value of an attribute
+      var sandwich = decadeButtons.getAttribute("data-year");
+      console.log("decadeButtons");
+
+      decadeButtons.getAttribute("data-year", this.dataset);
+
+      document.querySelector(".picked").classList.remove("picked");
+      decadeButtons.getAttribute("data-year", this.dataset);
+      this.classList.add("picked");
+
+      if (decadeButtons.hasAttribute("data-year", this.dataset)) {
+        console.log("Add a drink!");
+      }
+    }
+
+    checkTimeline();
+    function checkTimeline() {
+      document.querySelectorAll(".dot").forEach(dot => {
+        dot.addEventListener("click", selectDecade);
+      });
+    }
+  }
 }
 
 function hideDetail() {
@@ -65,15 +131,12 @@ function hideDetail() {
 }
 
 function displayTheme(buttonId) {
-  // create clone
-  // const clone = document.querySelector("template#theme").content.cloneNode(true);
-
   document.querySelector("#detail").style.display = "flex";
 
-  // Hvis man klikker et vilkårligt sted på knappen .close-btn, så lukker man fuldskærmsvisning
+  // The theme will close after a click on the .close-btn
   document.querySelector("#detail .close-btn").addEventListener("click", hideDetail);
 
-  // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
+  // And/or after a click on the theme:
   document.querySelector("#detail").addEventListener("click", hideDetail);
 
   console.log("button id: " + buttonId);
@@ -84,23 +147,6 @@ function displayTheme(buttonId) {
   document.querySelector("#detail .info-img").src = settings.currentIcons[buttonId[buttonId.length - 1] - 1].url;
 }
 
-function checkTimeline() {
-  document.querySelectorAll(".dot").forEach(dot => {
-    dot.style.fill = "#004153";
-    dot.addEventListener("click", selectDecade);
-  });
-}
-
-function selectDecade() {
-  console.log("selectDecade");
-  document.querySelector(".info").classList.remove("hidden");
-  document.querySelectorAll(".dot").forEach(dot => {
-    // dot.style.stroke = "004153";
-    dot.style.fill = "#004153";
-  });
-  // this.style.stroke = "#004153";
-  this.style.fill = "#d95e00";
-}
 function setDecadeEvents() {
   settings.currentIcons = jsonData.filter(data => data.childOf === "80erpc");
   setIcons();
@@ -111,7 +157,8 @@ function setDecadeEvents() {
 }
 
 function decadeClick() {
-  console.log(this.id);
+  // console.log(this.id);
+  console.log(event.target.id);
   let i = settings.currentDecade;
   settings.currentDecade = this.id.substring(this.id.length - 1, this.id.length);
   console.log("Current Decade " + settings.currentDecade);

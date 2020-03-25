@@ -56,6 +56,7 @@ body {
     scroll-snap-align: center;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    transition: all 1.5s ease-in-out;
   }
 
   article:nth-child(2n) {
@@ -123,7 +124,7 @@ body {
   .decade-wrapper {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.5rem 1rem;
+    padding: calc(1rem + 0.25vw);
   }
 
   .decade-selector p {
@@ -189,7 +190,6 @@ body {
   margin-top: 2.5%;
   margin-left: 60%;
 
-  // Anvendes til (midlertidig animation)
   svg {
     width: 100%;
     height: 100%;
@@ -258,6 +258,36 @@ body {
     right: 1rem;
     color: vars.$green-color;
     cursor: pointer;
+    padding: 0;
+  }
+
+  .bar1,
+  .bar2 {
+    width: 34px;
+    height: 5px;
+    background-color: vars.$green-color;
+    /*    margin: 4px 0;*/
+    transition: 0.4s;
+    border-radius: 40%;
+  }
+
+  .close-btn:hover .bar1,
+  .close-btn:hover .bar2 {
+    background-color: vars.$orange-color;
+  }
+
+  .bar2 {
+    margin-top: 4px;
+  }
+
+  /* Rotates the first bar*/
+  .active-bars .bar1 {
+    transform: rotate(-45deg) translate(-1px, 5px);
+  }
+
+  /* Rotates the second bar */
+  .active-bars .bar2 {
+    transform: rotate(45deg) translate(-1px, -5px);
   }
 
   .info {
@@ -288,12 +318,12 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* .content > * {
-  opacity: 0;
-  animation-delay: 800ms;
-  transform: translate3d(0, 5rem, 0);
-  transition: opacity 800ms, transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99);
-} */
+// .content > * {
+//   opacity: 0;
+//   animation-delay: 800ms;
+//   transform: translate3d(0, 5rem, 0);
+//   transition: opacity 800ms, transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99);
+// }
 
 .is-visible .content > * {
   opacity: 1;
@@ -303,14 +333,24 @@ body {
 //*-----------------------------------*//
 
 /*------ The timeline -----*/
+
+.dot,
+.st0 {
+  fill: vars.$green-color;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  r: calc(8 + 0.5vw);
+}
+
 .line {
   stroke-dasharray: 2147.089;
   stroke-dashoffset: 2147.089;
-  animation: draw 6s linear 1;
+  animation: draw 5s ease-in 1;
   animation-fill-mode: forwards;
   stroke: vars.$base-color;
   fill: none;
-  stroke-width: 1;
+  stroke-width: 3.5;
   stroke-miterlimit: 10;
 }
 
@@ -322,4 +362,8 @@ body {
   100% {
     stroke-dashoffset: 0;
   }
+}
+
+.picked .dot {
+  fill: vars.$orange-color;
 }
