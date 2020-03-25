@@ -39,8 +39,9 @@ function startObserver() {
   const articles = document.querySelectorAll("article");
 
   let options = {
+    root: null,
     rootMargin: "0px",
-    threshold: 0.75
+    threshold: 0.5
   };
 
   const callback = (entries, observer) => {
@@ -50,12 +51,24 @@ function startObserver() {
       if (entry.intersectionRatio >= 0.75) {
         intersectionHandler(entry);
 
-        // selectDecade(entry);
-        console.log("CHECK NU");
         observer.unobserve(entry.target);
         target.classList.add("is-visible");
       } else {
         target.classList.remove("is-visible");
+      }
+
+      const currentDot = document.querySelectorAll("st0");
+      // var nav_bar = document.getElementById('side-nav');
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].intersectionRatio > 0) {
+          let year = entries[i].target.getAttribute("data-year");
+          this.classList.add("active");
+          const currentDot = document.querySelectorAll("st0").dataset;
+
+          if (year === currentDot) {
+            this.classList.add("active");
+          }
+        }
       }
     });
   };
@@ -69,9 +82,34 @@ function startObserver() {
   function intersectionHandler(entry) {
     console.log("intersectionHandler");
 
-    const currentDot = document.querySelectorAll("st0");
-    currentDot.classList.add("recolor");
-    currentDot.classList.remove("recolor");
+    const current = document.querySelector("article");
+    const align = current.getAttribute("align");
+
+    const next = entry.target;
+
+    let elem = document.querySelector("[data-year]");
+
+    // alert(elem.getAttribute("data-year"));
+
+    document.querySelectorAll("[data-year]").forEach(e => {
+      e.value = e.dataset.selected;
+    });
+
+    let selector = "dataset";
+    let links = document.querySelectorAll(selector);
+    links.forEach(e => (e.style.color = "orange"));
+
+    if (current) {
+      console.log("current");
+      console.log("currentDot");
+      var yearType = current.getAttribute("data-year");
+      console.log("data-year");
+      // el.dataset.someDataAttr = "mydata";
+      current.classList.remove("active");
+      current.classList.add("active");
+    }
+    if (next) {
+    }
   }
 }
 
@@ -81,21 +119,18 @@ function hideDetail() {
 }
 
 function displayTheme() {
-  // create clone
-  // const clone = document.querySelector("template#theme").content.cloneNode(true);
-
   document.querySelector("#detail").style.display = "flex";
 
-  // Hvis man klikker et vilkårligt sted på knappen .close-btn, så lukker man fuldskærmsvisning
+  // Te theme will close after a click on the .close-btn
   document.querySelector("#detail .close-btn").addEventListener("click", hideDetail);
 
-  // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
+  // And/or after a click on the theme:
   document.querySelector("#detail").addEventListener("click", hideDetail);
 }
 
 function checkTimeline() {
   document.querySelectorAll(".dot").forEach(dot => {
-    dot.style.fill = "#004153";
+    // dot.style.fill = "#004153";
     dot.addEventListener("click", selectDecade);
   });
 }
@@ -116,7 +151,8 @@ function setDecadeEvents() {
 }
 
 function decadeClick() {
-  console.log(this.id);
+  // console.log(this.id);
+  console.log(event.target.id);
   let i = settings.currentDecade;
   settings.currentDecade = this.id.substring(this.id.length - 1, this.id.length);
   console.log("Current Decade " + settings.currentDecade);

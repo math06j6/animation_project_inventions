@@ -303,6 +303,11 @@ body {
 
 /*------ The timeline -----*/
 
+.active .st0.dot {
+  fill: var(--selectedColor);
+  fill: blue;
+}
+
 .st0 {
   fill: vars.$green-color;
   stroke: #000;
@@ -332,8 +337,9 @@ body {
   }
 }
 
-.active {
+.active .st0 {
   fill: red;
+  fill: aqua;
 }
 
 [data-year="one"] {
@@ -356,13 +362,8 @@ body {
   fill: red;
 }
 
-[data-year="five"] {
+.active .st0[data-year="five"] {
   background: red;
-  fill: red;
-}
-
-#two.active {
-  background: yellow;
-  background: yellow;
-  fill: yellow;
+  fill: vars.$selected-color;
+  fill: hotpink;
 }
