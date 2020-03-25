@@ -13,6 +13,11 @@ function init() {
   console.log("init");
   HTML.container = document.querySelector("main");
   HTML.computerImg = document.querySelector(".computer");
+  HTML.decade1 = document.querySelector("#decade_one");
+  HTML.decade2 = document.querySelector("#decade_two");
+  HTML.decade3 = document.querySelector("#decade_three");
+  HTML.decade4 = document.querySelector("#decade_four");
+  HTML.decade5 = document.querySelector("#decade_five");
   settings.currentDecade = 1;
   getData();
   startObserver();
@@ -21,6 +26,8 @@ function init() {
   // document.querySelectorAll(".computer-btn").forEach(info => {
   //   info.addEventListener("click", displayTheme);
   // });
+  //checkTimeline();
+  settings.int = 0;
 }
 
 async function getData() {
@@ -139,12 +146,61 @@ function displayTheme(buttonId) {
   // And/or after a click on the theme:
   document.querySelector("#detail").addEventListener("click", hideDetail);
 
-  console.log("button id: " + buttonId);
-  console.log("button id: " + buttonId[buttonId.length - 1]);
-  console.table("button id: " + settings.currentIcons[buttonId[buttonId.length - 1] - 1].info);
   document.querySelector("#detail .info p").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].info;
   document.querySelector("#detail .info h2").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].name;
   document.querySelector("#detail .info-img").src = settings.currentIcons[buttonId[buttonId.length - 1] - 1].url;
+  setDetailAni();
+}
+
+function setDetailAni() {
+  let tweenImg = gsap.fromTo(
+    "#detail .info-img",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.25,
+      scale: 1,
+      opacity: 1,
+      delay: 0.1,
+      ease: "power2"
+    }
+  );
+
+  let tweenH2 = gsap.fromTo(
+    "#detail .info h2",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      delay: 0.3,
+      ease: "power2"
+    }
+  );
+  let tweenP = gsap.fromTo(
+    "#detail .info p",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      delay: 0.5,
+      ease: "power2"
+    }
+  );
+  tweenImg.play();
+
+  //tweenImg.play();
+  tweenH2.play();
+  tweenP.play();
 }
 
 function setDecadeEvents() {
@@ -203,21 +259,57 @@ function setIcons() {
 
 function moveContent() {
   console.log("moveContent");
-  let tl = gsap.timeline();
-  tl.to(".computer-btn", {
-    duration: 2,
-    x: settings.moveContent,
-    delay: 0.5,
-    stagger: 0.2,
-    ease: "elastic"
-  });
-  /*   tl.to(".computer-btn", {
-    duration: 2,
-    repeat: Infinity,
-    scale: 1.3,
-    delay: 0.5,
-    yoyo: true,
-    stagger: 0.2,
-    ease: "elastic"
-  }); */
+
+  gsap.fromTo(
+    ".computer-btn",
+    {
+      rotate: -50,
+      duration: 2,
+
+      delay: 0.2,
+      stagger: 0.2,
+      ease: "elastic"
+    },
+    {
+      duration: 2,
+      x: settings.moveContent,
+      delay: 0.2,
+      stagger: 0.2,
+      ease: "elastic"
+    }
+  );
+
+  setIdleAni();
+}
+
+function setIdleAni() {
+  settings.int++;
+  if (settings.int < 2) {
+    let tl = gsap.timeline();
+    /*     tl.from(".computer-btn", {
+      repeat: -1,
+      duration: 2,
+      rotate: 50,
+      scale: 1,
+      repeatDelay: 4,
+      stagger: 0.2,
+      ease: "elastic"
+    }); */
+    tl.to(".computer-btn", {
+      repeat: -1,
+      duration: 2,
+      rotate: 360,
+      scale: 1.2,
+      repeatDelay: 4,
+      stagger: 0.2,
+      ease: "elastic"
+    });
+    /*     const move = settings.moveContent + 200;
+    gsap.to(".computer", {
+      duration: 2,
+      scale: 1.1
+    }); */
+  }
+
+  console.log(settings.int);
 }
