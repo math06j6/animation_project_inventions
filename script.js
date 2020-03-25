@@ -212,15 +212,24 @@ function setIcons() {
 function moveContent() {
   console.log("moveContent");
 
-  gsap.to(".computer-btn", {
-    duration: 2,
-    x: settings.moveContent,
-    rotate: 50,
-    delay: 0.5,
-    stagger: 0.2,
+  gsap.fromTo(
+    ".computer-btn",
+    {
+      rotate: -50,
+      duration: 2,
 
-    ease: "elastic"
-  });
+      delay: 0.2,
+      stagger: 0.2,
+      ease: "elastic"
+    },
+    {
+      duration: 2,
+      x: settings.moveContent,
+      delay: 0.2,
+      stagger: 0.2,
+      ease: "elastic"
+    }
+  );
 
   setIdleAni();
 }
@@ -247,6 +256,11 @@ function setIdleAni() {
       stagger: 0.2,
       ease: "elastic"
     });
+    /*     const move = settings.moveContent + 200;
+    gsap.to(".computer", {
+      duration: 2,
+      scale: 1.1
+    }); */
   }
 
   console.log(settings.int);

@@ -80,7 +80,8 @@ body {
     @include mixins.flexible();
     @include mixins.defaultBorder(); */
     color: vars.$green-color;
-    margin-left: 10%;
+    /* margin-bottom: 0; */
+    /* margin-left: 10%; */
     transform: translateX(var(--move-content));
   }
 
@@ -173,16 +174,17 @@ body {
 }
 
 .decade_h2 {
-  margin-left: 10%;
+  margin-left: 10vw;
 }
 .lowered {
-  margin-top: 142px;
+  margin-top: 70px;
 }
 
 .computer {
   width: 35%;
-  margin-left: 40%;
+  margin-left: 45%;
   transform: translateX(var(--move-content));
+  margin-top: -100px;
 }
 
 .computer-btn {
