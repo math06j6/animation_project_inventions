@@ -13,6 +13,11 @@ function init() {
   console.log("init");
   HTML.container = document.querySelector("main");
   HTML.computerImg = document.querySelector(".computer");
+  HTML.decade1 = document.querySelector("#decade_one");
+  HTML.decade2 = document.querySelector("#decade_two");
+  HTML.decade3 = document.querySelector("#decade_three");
+  HTML.decade4 = document.querySelector("#decade_four");
+  HTML.decade5 = document.querySelector("#decade_five");
   settings.currentDecade = 1;
   getData();
   startObserver();
@@ -164,13 +169,13 @@ function moveContent() {
     stagger: 0.2,
     ease: "elastic"
   });
-  /*   tl.to(".computer-btn", {
+  tl.to(".computer-btn", {
+    repeat: -1,
     duration: 2,
-    repeat: Infinity,
-    scale: 1.3,
-    delay: 0.5,
-    yoyo: true,
+    rotate: 180,
+    scale: 1.2,
+    repeatDelay: 3,
     stagger: 0.2,
     ease: "elastic"
-  }); */
+  });
 }
