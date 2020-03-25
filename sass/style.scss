@@ -287,12 +287,12 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* .content > * {
+.content > * {
   opacity: 0;
   animation-delay: 800ms;
   transform: translate3d(0, 5rem, 0);
   transition: opacity 800ms, transform 800ms cubic-bezier(0.13, 0.07, 0.26, 0.99);
-} */
+}
 
 .is-visible .content > * {
   opacity: 1;
@@ -303,7 +303,7 @@ body {
 
 /*------ The timeline -----*/
 
-.active .st0.dot {
+.active .dot {
   fill: var(--selectedColor);
   fill: blue;
 }
@@ -359,17 +359,19 @@ body {
 //   fill: red;
 // }
 
-.active .dot[data-year="five"] {
+.is-visible.active .dot.picked {
   fill: vars.$selected-color;
   fill: hotpink;
 }
 
-.dot.zoooom {
+.dot.picked {
   fill: vars.$selected-color;
+  fill: vars.$orange-color;
   fill: hotpink;
 }
 
-.zoooom {
+.picked {
   fill: vars.$selected-color;
+  fill: vars.$orange-color;
   fill: hotpink;
 }
