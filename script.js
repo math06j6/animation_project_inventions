@@ -65,7 +65,7 @@ function startObserver() {
         document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
-        // find matching link & add appropriate class
+        // find matching link
         var newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
       }
     });
@@ -119,7 +119,6 @@ function startObserver() {
     checkTimeline();
     function checkTimeline() {
       document.querySelectorAll(".dot").forEach(dot => {
-        // dot.style.fill = "#004153";
         dot.addEventListener("click", selectDecade);
       });
     }
