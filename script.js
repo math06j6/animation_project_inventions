@@ -17,7 +17,6 @@ function init() {
   getData();
   startObserver();
   hideDetail();
-  checkTimeline();
 
   document.querySelectorAll(".computer-btn").forEach(info => {
     info.addEventListener("click", displayTheme);
@@ -50,9 +49,9 @@ function startObserver() {
 
       if (entry.intersectionRatio >= 0.75) {
         intersectionHandler(entry);
-
         observer.unobserve(entry.target);
         target.classList.add("is-visible");
+
         target.style.background = entry.target.dataset.background;
       } else {
         target.classList.remove("is-visible");
@@ -106,6 +105,53 @@ function startObserver() {
     }
     if (next) {
     }
+
+    checkTimeline();
+    function checkTimeline() {
+      document.querySelectorAll(".dot").forEach(dot => {
+        // dot.style.fill = "#004153";
+        dot.addEventListener("click", selectDecade);
+      });
+    }
+
+    function selectDecade() {
+      console.log("selectDecade");
+      document.querySelector(".info").classList.remove("hidden");
+      // document.querySelectorAll(".dot").forEach(dot => {
+      //   dot.style.fill = "#004153";
+      // });
+      // this.style.fill = "#d95e00";
+
+      console.log("filtreringCollection");
+      document.querySelector("article").getAttribute("data-year", this.dataset);
+
+      var elemCarrots = document.querySelector(".dot");
+      // Get the value of an attribute
+      var sandwich = elemCarrots.getAttribute("data-year");
+      // Set an attribute value
+      elemCarrots.setAttribute("data-year", "red");
+
+      console.log("elemCarrots");
+
+      elemCarrots.style.fill = "aqua";
+
+      elemCarrots.getAttribute("data-year", this.dataset);
+
+      document.querySelector(".dot.zoooom").classList.remove("zoooom");
+
+      elemCarrots.getAttribute("data-year", this.dataset);
+      // elemCarrots.classList.add("zoooom");
+
+      this.classList.add("zoooom");
+
+      // elemCarrots.getAttribute(this.dataset, "turkey");
+      //   this.style.fill = "aqua";
+      // }
+
+      if (elemCarrots.hasAttribute("data-year", this.dataset)) {
+        console.log("Add a drink!");
+      }
+    }
   }
 }
 
@@ -123,92 +169,6 @@ function displayTheme() {
   // And/or after a click on the theme:
   document.querySelector("#detail").addEventListener("click", hideDetail);
 }
-
-function checkTimeline() {
-  document.querySelectorAll(".dot").forEach(dot => {
-    // dot.style.fill = "#004153";
-    dot.addEventListener("click", selectDecade);
-  });
-}
-
-function selectTheme() {
-  document.querySelector("article").getAttribute("data-house", this.value);
-}
-
-function selectDecade() {
-  console.log("filtreringCollection");
-  document.querySelector("article").getAttribute("data-years", this.dataset);
-
-  // if (article.hasAttribute(this.dataset)) {
-  //   console.log("Add a drink!");
-
-  //   article.setAttribute(this.dataset, "turkey");
-  //   this.style.fill = "aqua";
-  // }
-
-  var elemCarrots = document.querySelector(".dot");
-  // Get the value of an attribute
-  var sandwich = elemCarrots.getAttribute("data-year");
-  // Set an attribute value
-  elemCarrots.setAttribute("data-year", "red");
-
-  console.log("elemCarrots");
-
-  // var elemCarrots = document.querySelector('[data-years="this.dataset"]');
-
-  elemCarrots.style.fill = "aqua";
-
-  elemCarrots.getAttribute("data-years", this.dataset);
-
-  document.querySelector(".dot.zoooom").classList.remove("zoooom");
-
-  elemCarrots.getAttribute("data-years", this.dataset);
-  // elemCarrots.classList.add("zoooom");
-
-  this.classList.add("zoooom");
-
-  // var elemCarrots = document.querySelector('[data-years="carrots"]');
-
-  // let filterModel = document.querySelector("circle");
-
-  // // filterModel = this.dataset.years;
-
-  // if (filterModel.hasAttribute(this.dataset)) {
-  //   console.log("Add a drink!");
-  //   this.style.fill = "aqua";
-  // }
-
-  // filterModel = this.dataset.collection; // sæt variabel "filter" til aktuel værdi
-  // document.querySelector(".collection.active").classList.remove("valgt"); // fjern klassen valgt fra aktuel knap
-  // this.classList.add("valgt"); // marker den nyvalgte knap
-
-  // document.querySelector("#inddeling").textContent = this.textContent;
-
-  // visCollection(); // kald funktionen visCollection igen med nyt filter
-}
-
-// function startManipulatingTheSvg() {
-//   let colors = document.querySelectorAll(".dot");
-//   filterModel = this.dataset.collection;
-//   Array.from(colors).forEach((el, i) => {
-//     el.addEventListener("change", e => {
-//       if (e.target.checked) {
-//         let value = e.target.getAttribute("value");
-//         document.querySelector("html").setAttribute("data-color", value);
-//         selectedColor = window.getComputedStyle(el).getPropertyValue("--selectedColor");
-//       }
-//     });
-//   });
-// }
-
-// function selectDecade() {
-//   console.log("selectDecade");
-//   document.querySelector(".info").classList.remove("hidden");
-//   document.querySelectorAll(".dot").forEach(dot => {
-//     dot.style.fill = "#004153";
-//   });
-//   this.style.fill = "#d95e00";
-// }
 
 function setDecadeEvents() {
   document.querySelectorAll(".decade-selector a").forEach(element => {
