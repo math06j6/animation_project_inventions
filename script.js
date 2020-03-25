@@ -23,6 +23,7 @@ function init() {
   startObserver();
   hideDetail();
   checkTimeline();
+  settings.int = 0;
 }
 
 async function getData() {
@@ -161,21 +162,43 @@ function setIcons() {
 
 function moveContent() {
   console.log("moveContent");
-  let tl = gsap.timeline();
-  tl.to(".computer-btn", {
+
+  gsap.to(".computer-btn", {
     duration: 2,
     x: settings.moveContent,
+    rotate: 50,
     delay: 0.5,
     stagger: 0.2,
+
     ease: "elastic"
   });
-  tl.to(".computer-btn", {
-    repeat: -1,
-    duration: 2,
-    rotate: 180,
-    scale: 1.2,
-    repeatDelay: 3,
-    stagger: 0.2,
-    ease: "elastic"
-  });
+
+  setIdleAni();
+}
+
+function setIdleAni() {
+  settings.int++;
+  if (settings.int < 2) {
+    let tl = gsap.timeline();
+    /*     tl.from(".computer-btn", {
+      repeat: -1,
+      duration: 2,
+      rotate: 50,
+      scale: 1,
+      repeatDelay: 4,
+      stagger: 0.2,
+      ease: "elastic"
+    }); */
+    tl.to(".computer-btn", {
+      repeat: -1,
+      duration: 2,
+      rotate: 360,
+      scale: 1.2,
+      repeatDelay: 4,
+      stagger: 0.2,
+      ease: "elastic"
+    });
+  }
+
+  console.log(settings.int);
 }
