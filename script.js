@@ -82,12 +82,61 @@ function displayTheme(buttonId) {
   // Hvis man klikker et vilkårligt sted på pop-up card, så lukker man fuldskærmsvisning
   document.querySelector("#detail").addEventListener("click", hideDetail);
 
-  console.log("button id: " + buttonId);
-  console.log("button id: " + buttonId[buttonId.length - 1]);
-  console.table("button id: " + settings.currentIcons[buttonId[buttonId.length - 1] - 1].info);
   document.querySelector("#detail .info p").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].info;
   document.querySelector("#detail .info h2").textContent = settings.currentIcons[buttonId[buttonId.length - 1] - 1].name;
   document.querySelector("#detail .info-img").src = settings.currentIcons[buttonId[buttonId.length - 1] - 1].url;
+  setDetailAni();
+}
+
+function setDetailAni() {
+  let tweenImg = gsap.fromTo(
+    "#detail .info-img",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.25,
+      scale: 1,
+      opacity: 1,
+      delay: 0.1,
+      ease: "power2"
+    }
+  );
+
+  let tweenH2 = gsap.fromTo(
+    "#detail .info h2",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      delay: 0.3,
+      ease: "power2"
+    }
+  );
+  let tweenP = gsap.fromTo(
+    "#detail .info p",
+    {
+      scale: 0.8,
+      opacity: 0
+    },
+    {
+      duration: 0.5,
+      scale: 1,
+      opacity: 1,
+      delay: 0.5,
+      ease: "power2"
+    }
+  );
+  tweenImg.play();
+
+  //tweenImg.play();
+  tweenH2.play();
+  tweenP.play();
 }
 
 function checkTimeline() {
