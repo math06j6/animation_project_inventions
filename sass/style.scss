@@ -303,11 +303,6 @@ body {
 
 /*------ The timeline -----*/
 
-.active .dot {
-  fill: var(--selectedColor);
-  fill: blue;
-}
-
 .dot,
 .st0 {
   fill: vars.$green-color;
@@ -371,7 +366,10 @@ body {
 }
 
 .picked {
-  fill: vars.$selected-color;
   fill: vars.$orange-color;
-  fill: hotpink;
+}
+
+.picked .dot {
+  fill: var(--selectedColor);
+  fill: blue;
 }

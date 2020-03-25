@@ -29,21 +29,6 @@ async function getData() {
   setDecadeEvents();
 }
 
-function updateHistory(hash) {
-  console.log(updateHistory);
-  clearTimeout(updateHistory.timeout);
-  updateHistory.timeout = setTimeout(function() {
-    if (window.location.hash !== hash) {
-      if (location.hash !== "") {
-        history.pushState({}, window.title, hash);
-      } else {
-        // On first page load update the URL in place
-        history.replaceState({}, window.title, hash);
-      }
-    }
-  }, 1000);
-}
-
 function startObserver() {
   // The Intersection Observer
   // Inspiration from MDN and the article "Beautiful Scrolling Experiences – Without Libraries"
@@ -62,18 +47,14 @@ function startObserver() {
     entries.forEach(entry => {
       console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
       const { target } = entry;
-      const hash = "#" + entry.target.id;
-      const navEl = document.querySelector(`a[href="${hash}"]`);
+
       if (entry.intersectionRatio >= 0.75) {
         intersectionHandler(entry);
 
         var id = entry.target.getAttribute("id");
         // find matching link & add appropriate class
-        var newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
+        let newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
         observer.unobserve(entry.target);
-
-        navEl.classList.add("focus");
-        updateHistory(hash);
 
         target.classList.add("is-visible");
         // target.style.background = entry.target.dataset.background;
@@ -81,22 +62,12 @@ function startObserver() {
         target.classList.remove("is-visible");
       }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        // remove old active class
-        document.querySelector(".active").classList.remove("active");
+        // remove old picked class
+        document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
         // find matching link & add appropriate class
-        var newLink = document.querySelector(`[href="#${id}"]`).classList.add("active");
-      }
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].intersectionRatio > 0) {
-          let year = entries[i].target.getAttribute("data-year");
-
-          // const currentDot = document.querySelectorAll("dot").dataset;
-
-          // if (year === currentDot) {
-          // }
-        }
+        var newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
       }
     });
   };
@@ -110,21 +81,6 @@ function startObserver() {
   function intersectionHandler(entry) {
     console.log("intersectionHandler");
 
-    // const current = document.querySelector("article");
-    // const align = current.getAttribute("data-year");
-
-    // const next = entry.target;
-
-    // let elem = document.querySelector("[data-year]");
-    // alert(elem.getAttribute("data-year"));
-    // document.querySelectorAll("[data-year]").forEach(e => {
-    //   e.value = e.dataset.selected;
-    // });
-
-    // let selector = "dataset";
-    // let links = document.querySelectorAll(selector);
-    // links.forEach(e => (e.style.color = "orange"));
-
     const current = document.querySelector("article");
     const align = current.getAttribute("data-year");
     const next = entry.target;
@@ -136,8 +92,8 @@ function startObserver() {
       document.querySelector("article").getAttribute("data-year", entry.dataset);
       // var yearType = current.getAttribute("data-year");
       console.log("data-year");
-      current.classList.remove("active");
-      current.classList.add("active");
+      current.classList.remove("picked");
+      current.classList.add("picked");
       // current.classList.remove("is-visible");
       current.classList.add("is-visible");
     }
@@ -147,29 +103,20 @@ function startObserver() {
     function selectDecade() {
       console.log("selectDecade");
       document.querySelector(".info").classList.remove("hidden");
-      // document.querySelectorAll(".dot").forEach(dot => {
-      //   dot.style.fill = "#004153";
-      // });
 
       document.querySelector("article").getAttribute("data-year", this.dataset);
 
       const decadeButtons = document.querySelector(".dot");
       // Get the value of an attribute
       var sandwich = decadeButtons.getAttribute("data-year");
-      // Set an attribute value
       console.log("decadeButtons");
 
       decadeButtons.getAttribute("data-year", this.dataset);
 
       document.querySelector(".dot.picked").classList.remove("picked");
       decadeButtons.getAttribute("data-year", this.dataset);
-      // decadeButtons.classList.add("picked");
       this.classList.add("picked");
 
-      // decadeButtons.getAttribute(this.dataset, "turkey");
-      //   this.style.fill = "aqua";
-      // }
-      // decadeButtons.style.fill = "aqua";
       if (decadeButtons.hasAttribute("data-year", this.dataset)) {
         console.log("Add a drink!");
       }
@@ -182,8 +129,6 @@ function startObserver() {
         dot.addEventListener("click", selectDecade);
       });
     }
-
-    /* Update the window URL on swipe, this is throttled so that the history doesn't get filled with useless entries*/
   }
 }
 
