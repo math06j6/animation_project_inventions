@@ -164,6 +164,14 @@ body {
   }
 }
 
+#decade_one {
+  .themes {
+    display: flex;
+    flex-direction: row;
+    margin-left: 60%;
+  }
+}
+
 .decade_h2 {
   margin-left: 10%;
 }
@@ -186,8 +194,7 @@ body {
   font-family: inherit;
   width: 5rem;
   height: 5rem;
-  margin-top: 2.5%;
-  margin-left: 60%;
+  margin: 2.5% 4%;
 
   // Anvendes til (midlertidig animation)
   svg {
