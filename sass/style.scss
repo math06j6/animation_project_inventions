@@ -172,7 +172,6 @@ body {
   width: 5rem;
   height: 5rem;
 
-  // Anvendes til (midlertidig animation)
   svg {
     width: 100%;
     height: 100%;
@@ -312,10 +311,6 @@ body {
   r: calc(8 + 0.5vw);
 }
 
-.dot.active[data-years] {
-  fill: aqua;
-}
-
 .line {
   stroke-dasharray: 2147.089;
   stroke-dashoffset: 2147.089;
@@ -337,39 +332,6 @@ body {
   }
 }
 
-// [data-year="one"] {
-//   background: #f0c75e;
-//   fill: red;
-// }
-
-// [data-year="two"] {
-//   fill: red;
-// }
-
-// [data-year="three"] {
-//   fill: red;
-// }
-
-// [data-year="four"] {
-//   fill: red;
-// }
-
-.is-visible.active .dot.picked {
-  fill: vars.$selected-color;
-  fill: hotpink;
-}
-
-.dot.picked {
-  fill: vars.$selected-color;
-  fill: vars.$orange-color;
-  fill: hotpink;
-}
-
-.picked {
-  fill: vars.$orange-color;
-}
-
 .picked .dot {
-  fill: var(--selectedColor);
-  fill: blue;
+  fill: vars.$orange-color;
 }

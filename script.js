@@ -62,7 +62,6 @@ function startObserver() {
         target.classList.remove("is-visible");
       }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        // remove old picked class
         document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
@@ -87,15 +86,10 @@ function startObserver() {
 
     if (current) {
       console.log("current");
-
-      // console.log("currentDot");
       document.querySelector("article").getAttribute("data-year", entry.dataset);
-      // var yearType = current.getAttribute("data-year");
       console.log("data-year");
       current.classList.remove("picked");
       current.classList.add("picked");
-      // current.classList.remove("is-visible");
-      current.classList.add("is-visible");
     }
     if (next) {
     }
@@ -113,7 +107,7 @@ function startObserver() {
 
       decadeButtons.getAttribute("data-year", this.dataset);
 
-      document.querySelector(".dot.picked").classList.remove("picked");
+      document.querySelector(".picked").classList.remove("picked");
       decadeButtons.getAttribute("data-year", this.dataset);
       this.classList.add("picked");
 
@@ -155,8 +149,8 @@ function setDecadeEvents() {
 }
 
 function decadeClick() {
-  // console.log(this.id);
-  console.log(event.target.id);
+  console.log(this.id);
+  // console.log(event.target.id);
   let i = settings.currentDecade;
   settings.currentDecade = this.id.substring(this.id.length - 1, this.id.length);
   console.log("Current Decade " + settings.currentDecade);
