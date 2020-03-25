@@ -308,12 +308,17 @@ body {
   fill: blue;
 }
 
+.dot,
 .st0 {
   fill: vars.$green-color;
   stroke: #000;
   stroke-width: 2;
   stroke-miterlimit: 10;
   r: calc(8 + 0.5vw);
+}
+
+.dot.active[data-years] {
+  fill: aqua;
 }
 
 .line {
@@ -337,24 +342,34 @@ body {
   }
 }
 
-[data-year="one"] {
-  background: #f0c75e;
-  fill: red;
+// [data-year="one"] {
+//   background: #f0c75e;
+//   fill: red;
+// }
+
+// [data-year="two"] {
+//   fill: red;
+// }
+
+// [data-year="three"] {
+//   fill: red;
+// }
+
+// [data-year="four"] {
+//   fill: red;
+// }
+
+.active .dot[data-year="five"] {
+  fill: vars.$selected-color;
+  fill: hotpink;
 }
 
-[data-year="two"] {
-  fill: red;
+.dot.zoooom {
+  fill: vars.$selected-color;
+  fill: hotpink;
 }
 
-[data-year="three"] {
-  fill: red;
-}
-
-[data-year="four"] {
-  fill: red;
-}
-
-.active .st0[data-year="five"] {
+.zoooom {
   fill: vars.$selected-color;
   fill: hotpink;
 }
