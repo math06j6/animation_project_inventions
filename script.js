@@ -53,23 +53,19 @@ function startObserver() {
 
         observer.unobserve(entry.target);
         target.classList.add("is-visible");
+        target.style.background = entry.target.dataset.background;
       } else {
         target.classList.remove("is-visible");
       }
+      // for (var i = 0; i < entries.length; i++) {
+      //   if (entries[i].intersectionRatio > 0) {
+      //     let year = entries[i].target.getAttribute("data-year");
+      //     const currentDot = document.querySelectorAll("st0").dataset;
 
-      const currentDot = document.querySelectorAll("st0");
-      // var nav_bar = document.getElementById('side-nav');
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].intersectionRatio > 0) {
-          let year = entries[i].target.getAttribute("data-year");
-          this.classList.add("active");
-          const currentDot = document.querySelectorAll("st0").dataset;
-
-          if (year === currentDot) {
-            this.classList.add("active");
-          }
-        }
-      }
+      //     if (year === currentDot) {
+      //     }
+      //   }
+      // }
     });
   };
 

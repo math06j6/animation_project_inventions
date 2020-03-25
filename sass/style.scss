@@ -337,33 +337,24 @@ body {
   }
 }
 
-.active .st0 {
-  fill: red;
-  fill: aqua;
-}
-
 [data-year="one"] {
   background: #f0c75e;
   fill: red;
 }
 
 [data-year="two"] {
-  background: red;
   fill: red;
 }
 
 [data-year="three"] {
-  background: red;
   fill: red;
 }
 
 [data-year="four"] {
-  background: red;
   fill: red;
 }
 
 .active .st0[data-year="five"] {
-  background: red;
   fill: vars.$selected-color;
   fill: hotpink;
 }
