@@ -173,7 +173,6 @@ body {
     display: flex;
     flex-direction: row;
     margin-left: 60%;
-    padding-top: 1rem;
   }
 }
 
@@ -202,7 +201,9 @@ body {
   font-family: inherit;
   width: 5rem;
   height: 5rem;
-  margin: 2.5% 4%;
+  // margin: 2.5% 4%;
+  margin: 1rem;
+  background-repeat: no-repeat;
 
   svg {
     width: 100%;
@@ -268,8 +269,8 @@ body {
     border: none;
     position: fixed;
     min-width: initial;
-    top: 1rem;
-    right: 1rem;
+    top: 2rem;
+    right: 2rem;
     color: vars.$green-color;
     cursor: pointer;
     padding: 0;

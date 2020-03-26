@@ -62,7 +62,7 @@ function startObserver() {
         decadeSwipe(entry.target.getAttribute("data-number")); */
         var id = entry.target.getAttribute("id");
         // find matching link & add appropriate class
-        let newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
+        // let newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
         //observer.unobserve(entry.target);
 
         target.classList.add("is-visible");
