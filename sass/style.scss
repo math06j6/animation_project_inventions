@@ -36,7 +36,7 @@ body {
     height: 100vh;
     display: flex;
     overflow-x: scroll;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     overflow-y: hidden;

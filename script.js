@@ -52,23 +52,31 @@ function startObserver() {
 
   const callback = (entries, observer) => {
     entries.forEach(entry => {
-      console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
+      //console.log(entry.target, entry.isIntersecting, entry.intersectionRatio);
       const { target } = entry;
 
       if (entry.intersectionRatio >= 0.75) {
-        intersectionHandler(entry);
-
+        console.log("If if if");
+        //intersectionHandler(entry);
+        /* console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
+        decadeSwipe(entry.target.getAttribute("data-number")); */
         var id = entry.target.getAttribute("id");
         // find matching link & add appropriate class
         let newLink = document.querySelector(`[href="#${id}"]`).classList.add("is-visible");
-        observer.unobserve(entry.target);
+        //observer.unobserve(entry.target);
 
         target.classList.add("is-visible");
+
+        /* decadeClick(); */
         // target.style.background = entry.target.dataset.background;
       } else {
+        console.log("else else else");
         target.classList.remove("is-visible");
       }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
+        decadeSwipe(entry.target.getAttribute("data-number"));
+        console.log("3rd 3rd 3rd");
         document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
@@ -221,6 +229,17 @@ function decadeClick() {
   if (i != settings.currentDecade) {
     updateDecade();
   }
+}
+
+function decadeSwipe(id) {
+  console.log("id: " + id);
+  let i = settings.currentDecade;
+  settings.currentDecade = id;
+  if (i != settings.currentDecade) {
+    updateDecade();
+  }
+  /* console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
+        decadeSwipe(entry.target.getAttribute("data-number")); */
 }
 
 function updateDecade() {
