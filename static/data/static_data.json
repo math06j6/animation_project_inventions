@@ -13,10 +13,5 @@
     "filetype": "svgicon",
     "url": "./static/www_1color.svg",
     "name": "www"
-  },
-  {
-    "filetype": "pcimage",
-    "url": "./static/Ibm_pc_5150.jpg",
-    "name": "80erpc"
   }
 ]

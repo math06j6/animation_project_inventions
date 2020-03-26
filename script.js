@@ -74,14 +74,14 @@ function startObserver() {
         target.classList.remove("is-visible");
       }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
-        decadeSwipe(entry.target.getAttribute("data-number"));
         console.log("3rd 3rd 3rd");
         document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
         // find matching link
         var newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+        console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
+        decadeSwipe(entry.target.getAttribute("data-number"));
       }
     });
   };
