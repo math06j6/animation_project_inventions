@@ -84,8 +84,9 @@ body {
     /* margin-bottom: 0; */
     /* margin-left: 10%; */
     transform: translateX(var(--move-content));
+    width: 500px;
+    margin-left: 10%;
   }
-
   h2 {
     font: 100% vars.$roboto-slab-font-stack;
     font-size: 2rem;
@@ -123,9 +124,10 @@ body {
   z-index: 5;
 
   .decade-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: calc(1rem + 0.25vw);
+    /* max-width: 1400px; */
+    width: 95%;
+    margin: calc(1rem + 0.25vw) auto;
+    /* padding: calc(1rem + 0.25vw); */
   }
 
   .decade-selector p {
@@ -180,7 +182,9 @@ body {
 .lowered {
   margin-top: 70px;
 }
-
+.heightened {
+  margin-top: -44px;
+}
 .computer {
   width: 35%;
   margin-left: 45%;

@@ -26,7 +26,7 @@ function init() {
   // document.querySelectorAll(".computer-btn").forEach(info => {
   //   info.addEventListener("click", displayTheme);
   // });
-  //checkTimeline();
+  //checkTimeline();jj
   settings.int = 0;
 }
 
