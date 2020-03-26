@@ -351,11 +351,17 @@ body {
 
 .dot,
 .st0 {
-  fill: vars.$green-color;
-  stroke: #000;
+  fill: vars.$bg-color;
+  stroke: vars.$green-color;
   stroke-width: 2;
   stroke-miterlimit: 10;
   r: calc(8 + 0.5vw);
+}
+
+.dot {
+  r: calc(5.5 + 0.5vw);
+  stroke-width: 0;
+  fill: vars.$green-color;
 }
 
 .line {
@@ -367,6 +373,7 @@ body {
   fill: none;
   stroke-width: 3.5;
   stroke-miterlimit: 10;
+  stroke: vars.$green-color;
 }
 
 @keyframes draw {
