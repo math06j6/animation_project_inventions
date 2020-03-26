@@ -71,25 +71,25 @@
   {
     "id": "computer_2",
     "filetype": "pcimage",
-    "url": "./images/hp_vectra.png",
+    "url": "./images/hp_vectra_new.png",
     "name": "90erpc"
   },
   {
     "id": "computer_3",
     "filetype": "pcimage",
-    "url": "./images/ibmthinkpad.png",
+    "url": "./images/ibmthinkpad_new.png",
     "name": "00erpc"
   },
   {
     "id": "computer_4",
     "filetype": "pcimage",
-    "url": "./images/Macbook_Air.png",
+    "url": "./images/Macbook_Air_new.png",
     "name": "10erpc"
   },
   {
     "id": "computer_5",
     "filetype": "pcimage",
-    "url": "./images/asuszenbook.png",
+    "url": "./images/asuszenbook_new.png",
     "name": "20erpc"
   }
 ]
