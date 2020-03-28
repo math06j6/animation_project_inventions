@@ -1,9 +1,8 @@
 "use strict";
-// import "@babel/polyfill";
+import "@babel/polyfill";
 import { getJson } from "./modules/getJsonData";
 
 window.addEventListener("DOMContentLoaded", init);
-// document.addEventListener("DOMContentLoaded", start);
 
 const HTML = {};
 let jsonData = [];
@@ -23,10 +22,6 @@ function init() {
   startObserver();
   hideDetail();
 
-  // document.querySelectorAll(".computer-btn").forEach(info => {
-  //   info.addEventListener("click", displayTheme);
-  // });
-  //checkTimeline();jj
   settings.int = 0;
 }
 
@@ -74,14 +69,60 @@ function startObserver() {
         target.classList.remove("is-visible");
       }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        console.log("3rd 3rd 3rd");
+        console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
+        decadeSwipe(entry.target.getAttribute("data-number"));
+
+        // let goGO = entry.target.getAttribute("id");
+
+        // getAttribute("data-number", entry.dataset);
+
+        // var newLink = document.querySelector(`[href="#${id}"]`);
+
+        // let decadeButtons = document.querySelector(".dot");
+
+        // const taXa = document.querySelector(".decade_circle");
+        // taXa.classList.remove("picked");
+
+        // document.querySelectorAll(".dot").forEach(decadeButtons => {
+        //   if (decadeButtons.hasAttribute(id)) {
+        //     let parent = decadeButtons.parentElement;
+
+        //     taXa == parent.classList.add("picked");
+        //   }
+        // });
+
+        // decadeButtons(id);
+
+        // var elem = document.querySelector("#some-elem");
+
+        // document.querySelector(".picked").classList.remove("picked");
+        // get id of the intersecting section
+        // var id = entry.target.getAttribute("id");
+        // // find matching link
+
+        // var newLink = document.querySelector("`[href="#${id}"]`.dot").classList.add("picked");
         document.querySelector(".picked").classList.remove("picked");
         // get id of the intersecting section
         var id = entry.target.getAttribute("id");
         // find matching link
-        var newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
-        console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
-        decadeSwipe(entry.target.getAttribute("data-number"));
+        document.querySelector(`[href="#${id}"]`).classList.add("picked");
+
+        if (entry.target.classList.contains("dot")) {
+          // Get the parent with the `.accordion` class
+          let parent = getClosest(entry.target, ".decade_circle");
+          this.parent.classList.add("picked");
+        }
+
+        // const decadeButtons = document.querySelector(".dot");
+        // let id = entry.target.getAttribute("id");
+
+        // if (decadeButtons.hasAttribute("data-number", this.dataset)) {
+        //   console.log("decadeButtons");
+        //   //const current = document.querySelector("article");
+        //   this.parentElement.classList.add("picked");
+        //   //current.classList.remove("picked");
+        //   //current.classList.add("picked");
+        // }
       }
     });
   };
@@ -96,13 +137,13 @@ function startObserver() {
     console.log("intersectionHandler");
 
     const current = document.querySelector("article");
-    const align = current.getAttribute("data-year");
+    const align = current.getAttribute("data-number");
     const next = entry.target;
 
     if (current) {
       console.log("current");
-      document.querySelector("article").getAttribute("data-year", entry.dataset);
-      console.log("data-year");
+      document.querySelector("article").getAttribute("data-number", entry.dataset);
+      console.log("data-number");
       current.classList.remove("picked");
       current.classList.add("picked");
     }
@@ -113,20 +154,20 @@ function startObserver() {
       console.log("selectDecade");
       document.querySelector(".info").classList.remove("hidden");
 
-      document.querySelector("article").getAttribute("data-year", this.dataset);
+      document.querySelector("article").getAttribute("data-number", this.dataset);
 
       const decadeButtons = document.querySelector(".dot");
       // Get the value of an attribute
-      var sandwich = decadeButtons.getAttribute("data-year");
+      // var sandwich = decadeButtons.getAttribute("data-number");
       console.log("decadeButtons");
 
-      decadeButtons.getAttribute("data-year", this.dataset);
+      decadeButtons.getAttribute("data-number", this.dataset);
 
       document.querySelector(".picked").classList.remove("picked");
-      decadeButtons.getAttribute("data-year", this.dataset);
+      decadeButtons.getAttribute("data-number", this.dataset);
       this.classList.add("picked");
 
-      if (decadeButtons.hasAttribute("data-year", this.dataset)) {
+      if (decadeButtons.hasAttribute("data-number", this.dataset)) {
         console.log("Add a drink!");
       }
     }
@@ -271,10 +312,6 @@ function setIcons() {
     }
   });
 }
-
-/*   document.querySelectorAll(".computer-btn").forEach(info => {
-    info.addEventListener("click", displayTheme);
-  }); */
 
 function moveContent() {
   console.log("moveContent");
