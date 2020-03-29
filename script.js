@@ -49,9 +49,6 @@ function startObserver() {
     entries.forEach(entry => {
       const { target } = entry;
 
-      if (entry.intersectionRatio >= 0.75) {
-        target.classList.add("is-visible");
-      }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
         console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
         decadeSwipe(entry.target.getAttribute("data-number"));
