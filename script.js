@@ -39,30 +39,34 @@ function startObserver() {
 
   const articles = document.querySelectorAll("article");
 
-  let options = {
+  const options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.5
+    threshold: 0.55
   };
 
   const callback = (entries, observer) => {
     entries.forEach(entry => {
       const { target } = entry;
 
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+      // if (entry.intersectionRatio >= 0.75) {
+      //   target.classList.add("is-visible");
+      // }
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
         console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
         decadeSwipe(entry.target.getAttribute("data-number"));
-
         document.querySelector(".picked").classList.remove("picked");
+        target.classList.add("is-visible");
         let links = entry.target.getAttribute("data-number");
         links = document.querySelector("a");
         let id = entry.target.getAttribute("id");
         if (links.hasAttribute("data-number", entry.dataset)) {
           // if (links.matches(".decade_circle")) {
-          console.log(links);
+          console.log(id);
           // console.log("data-number");
 
-          document.querySelector(`[href="#${id}"]`).classList.add("picked");
+          links = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+          // links = document.querySelector(`#${id}`).classList.add("picked");
           console.log(id);
         } else {
           console.log("Not a match... =(");
