@@ -57,15 +57,20 @@ function startObserver() {
         decadeSwipe(entry.target.getAttribute("data-number"));
         document.querySelector(".picked").classList.remove("picked");
         target.classList.add("is-visible");
-        let links = entry.target.getAttribute("data-number");
-        links = document.querySelector("a");
+
         let id = entry.target.getAttribute("id");
+        let links = entry.target.getAttribute(`#${id}`);
+        links = document.querySelector("a");
         if (links.hasAttribute("data-number", entry.dataset)) {
           // if (links.matches(".decade_circle")) {
           console.log(id);
+          // id = document.querySelector(`#${id}`).classList.add("picked");
+          let toTo = document.querySelector(`a[href="#${id}"]`);
           // console.log("data-number");
+          links = toTo.classList.add("picked");
+          console.log("toTo");
 
-          links = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+          // links = document.querySelector(`[href="#${id}"]`).classList.add("picked");
           // links = document.querySelector(`#${id}`).classList.add("picked");
           console.log(id);
         } else {

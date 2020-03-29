@@ -1,6 +1,38 @@
 @use 'partials/vars';
 @use 'partials/mixins';
 
+@font-face {
+  font-family: "Roboto";
+  src: url("/static/fonts/roboto-bold-webfont.woff2") format("woff2"), url("/static/fonts/roboto-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/static/fonts/roboto-light-webfont.woff2") format("woff2"), url("/static/fonts/roboto-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/static/fonts/roboto-regular-webfont.woff2") format("woff2"), url("/static/fonts/roboto-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Slab", serif;
+  src: url("/static/fonts/RobotoSlab-VariableFont_wght.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: 25% 150%;
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   --move-content: 0;
 }
@@ -87,10 +119,12 @@ body {
     width: 500px;
     margin-left: 10%;
   }
+
   h2 {
     font: 100% vars.$roboto-slab-font-stack;
     font-size: 2rem;
     color: vars.$orange-color;
+    font-variation-settings: "wght" 100;
   }
 
   h3 {
@@ -201,7 +235,6 @@ body {
   font-family: inherit;
   width: 5rem;
   height: 5rem;
-  // margin: 2.5% 4%;
   margin: 1rem;
   background-repeat: no-repeat;
 
@@ -316,7 +349,8 @@ body {
   }
   .info h2 {
     padding: 2.5%;
-    margin-left: 2%;
+    margin: 0;
+    text-transform: capitalize;
   }
 
   .info-img {
@@ -356,13 +390,13 @@ body {
   stroke: vars.$green-color;
   stroke-width: 2;
   stroke-miterlimit: 10;
-  r: 20;
-  r: calc(8 + 0.5vw);
+  //   r: 20;
+  //   r: calc(8 + 0.5vw);
 }
 
 .dot {
-  r: 10;
-  r: calc(5.5 + 0.5vw);
+  // r: 10;
+  // r: calc(5.5 + 0.5vw);
   stroke-width: 0;
   fill: vars.$green-color;
 }
