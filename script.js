@@ -49,9 +49,9 @@ function startObserver() {
     entries.forEach(entry => {
       const { target } = entry;
 
-      // if (entry.intersectionRatio >= 0.75) {
-      //   target.classList.add("is-visible");
-      // }
+      if (entry.intersectionRatio >= 0.75) {
+        target.classList.add("is-visible");
+      }
       if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
         console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
         decadeSwipe(entry.target.getAttribute("data-number"));
@@ -65,14 +65,13 @@ function startObserver() {
           // if (links.matches(".decade_circle")) {
           console.log(id);
           // id = document.querySelector(`#${id}`).classList.add("picked");
-          let toTo = document.querySelector(`a[href="#${id}"]`);
+          let andenTest = document.querySelector(`[href="#${id}"]`);
+          console.log(id);
+          links = andenTest.classList.add("picked");
           // console.log("data-number");
-          links = toTo.classList.add("picked");
-          console.log("toTo");
 
           // links = document.querySelector(`[href="#${id}"]`).classList.add("picked");
           // links = document.querySelector(`#${id}`).classList.add("picked");
-          console.log(id);
         } else {
           console.log("Not a match... =(");
         }
