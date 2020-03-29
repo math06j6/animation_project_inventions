@@ -61,14 +61,66 @@ function startObserver() {
       if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
         console.log("Entry data-number: " + entry.target.getAttribute("data-number"));
         decadeSwipe(entry.target.getAttribute("data-number"));
+        // console.log(entry.target.getAttribute("data-number"));
 
-        target.classList.add("is-visible");
+        // let newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+        // let newLink = document.querySelector(`[href="#${id}"]`);
+        // let newLink = document.querySelector(["number"]);
 
-        document.querySelector(".picked").classList.remove("picked");
+        // var restaurant = document.querySelector(".decade_circle");
+        // var elem = document.querySelector(".decade_circle");
+        // var elem = document.querySelector(".decade_circle");
+        // let href = link.getAttribute("href");
+        let links = document.querySelector("a");
+        // var elem = document.querySelector("#sandwich");
+        if (links.matches(".decade_circle")) {
+          console.log(links);
+          // links.classList.remove("picked");
+          document.querySelector(".picked").classList.remove("picked");
+          var id = entry.target.getAttribute("id");
+          console.log(id);
+          // let newLink = links(`[href="#${id}"]`).classList.add("picked");
+          document.querySelector(`[href="#${id}"]`).classList.add("picked");
+          // elem.getAttribute("data-number", entry.dataset);
+          // let value = entry.dataset.getAttribute("data-number");
+          // console.log("data-number");
+          // value = elem.dataset.number.classList.add("picked");
+          // elem.getAttribute("data-number", entry.dataset);
+          // var hopNu = entry.target.getAttribute("data-number");
+          // // console.log(hopNu);
+          // elem = elem.classList.add("picked");
+          // restaurant.dataset.number = newRating;
+          // this.restaurant.classList.add("picked");
+        } else {
+          console.log("Not a match... =(");
+        }
 
-        // document.querySelector(`[href="#${id}"]`).classList.add("picked");
+        // restaurant.dataset.number = newRating;
+        // goGO = newRating.classList.add("picked");
 
-        // let goGO = entry.target.getAttribute("id");
+        // var hide = function(element) {
+        //   element.classList.remove("picked");
+        // };
+
+        // var elements = document.querySelectorAll(".some-class");
+
+        // target.classList.add("is-visible");
+
+        // // document.querySelector(`[href="#${id}"]`).classList.add("picked");
+        // let goGO = entry.target.getAttribute("data-number");
+
+        // var wizards = document.querySelector(".decade_circle");
+
+        // var hufflepuff = wizards
+        //   .filter(function(wizard) {
+        //     return wizard.house === "Hufflepuff";
+        //   })
+        //   .map(function(wizard) {
+        //     return wizard.name;
+        //   });
+
+        // console.log(hufflepuff);
+
         // getAttribute("data-number", entry.dataset);
 
         // var newLink = document.querySelector(`[href="#${id}"]`);
@@ -85,32 +137,52 @@ function startObserver() {
         // var newLink = document.querySelector("`[href="#${id}"]`.dot").classList.add("picked");
         // document.querySelector("decade_circle picked").classList.remove("picked");
 
-        document.querySelectorAll(".decade_circle").forEach(decadeButtons => {
-          // console.log("decadeButtons");
+        // if (decadeButtons.hasAttribute("data-number", this.dataset)) {
+        //   console.log("decadeButtons");
+        //   //const current = document.querySelector("article");
+        //   this.parentElement.classList.add("picked");
+        //   //current.classList.remove("picked");
+        //   //current.classList.add("picked");
+        // }
 
-          if (decadeButtons.hasAttribute("data-number", entry.dataset)) {
-            console.log("data-number");
-            var id = entry.target.getAttribute("id");
-            console.log(id);
-            // // decadeButtons.add("picked");
-            // // this.decadeButtons.classList.add("picked");
+        // if (newRating.hasAttribute("data-number", entry.dataset)) {
+        //   console.log("data-number");
+        //   newRating.classList.add("picked");
+        // }
 
-            // decadeButtons.target(`[href="#${id}"]`).classList.add("picked");
-            decadeButtons = document.querySelector(`[href="#${id}"]`).classList.add("picked");
-          }
-          // if (decadeSwipe("data-number") === decadeButtons("data-number")) {
-          //   console.log("data-number");
+        // if (newRating == decadeSwipe) {
+        //   newRating.classList.add("picked");
+        // }
 
-          // }
-        });
+        // var restaurant = document.getElementById("restaurantId");
+
+        // var ratings = restaurant.dataset.ratings;
+        // restaurant.dataset.ratings = newRating;
+
+        // entry.target.getAttribute("data-number");
+        // restaurant.entry.target.dataset.number = newRating;
+        // this.newRating.classList.add("picked")
+
+        // decadeButtons = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+
+        // document.querySelectorAll(".decade_circle").forEach(decadeButtons => {
+        //   // console.log("decadeButtons");
+
+        //   if (decadeButtons.hasAttribute("data-number", entry.dataset)) {
+        //     console.log("data-number");
+        //     var id = entry.target.getAttribute("id");
+        //     console.log(id);
+        //     // // decadeButtons.add("picked");
+        //     // // this.decadeButtons.classList.add("picked");
+
+        //     // decadeButtons.target(`[href="#${id}"]`).classList.add("picked");
+        //     decadeButtons = document.querySelector(`[href="#${id}"]`).classList.add("picked");
+        //   }
+        // });
         // const reColor = elem.classList.remove("picked");
-        // get id of the intersecting section
         // let id = entry.target.getAttribute("id");
-        // find matching link
         // let newLink = document.querySelector(`[href="#${id}"]`).classList.add("picked");
 
-        // var id = nentry.target.getAttribute("id");
-        // find matching link & add appropriate class
         // var newLink = document.querySelector(`[href="#${id}"]`).classList.add("active");
 
         // if (document.querySelector(`[href="#${id}"]`).classList.contains("dot")) {
