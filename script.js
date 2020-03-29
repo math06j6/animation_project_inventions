@@ -67,7 +67,7 @@ function startObserver() {
           // id = document.querySelector(`#${id}`).classList.add("picked");
           let andenTest = document.querySelector(`[href="#${id}"]`);
           console.log(id);
-          links = andenTest.classList.add("picked");
+          andenTest = andenTest.classList.add("picked");
           // console.log("data-number");
 
           // links = document.querySelector(`[href="#${id}"]`).classList.add("picked");
